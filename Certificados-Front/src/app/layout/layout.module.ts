@@ -5,7 +5,8 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { PanelCursoComponent } from './dashboard/panel-curso/panel-curso.component';
+import { SearchCursoComponent } from './dashboard/search-curso/search-curso.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HeaderComponent,
     MainComponent,
     SidebarComponent,
-    DashboardComponent
+    PanelCursoComponent,
+    SearchCursoComponent
   ],
   imports: [
     CommonModule,
