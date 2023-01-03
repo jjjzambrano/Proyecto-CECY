@@ -6,6 +6,7 @@ import { StudentHeaderComponent } from './student-header/student-header.componen
 import { StudentMainComponent } from './student-main/student-main.component';
 import { StudentRoutingModule } from './student-routing.module';
 import { StudentSidebarComponent } from './student-sidebar/student-sidebar.component';
+import { StudentModalComponent } from './student-modal/student-modal.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { StudentSidebarComponent } from './student-sidebar/student-sidebar.compo
     StudentMainComponent,
     StudentSidebarComponent,
     StudentPanelCursoComponent,
-    StudentSearchCursoComponent
+    StudentSearchCursoComponent,
+    StudentModalComponent
   ],
   imports: [
     CommonModule,

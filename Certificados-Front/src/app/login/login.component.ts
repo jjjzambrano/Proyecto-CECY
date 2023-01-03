@@ -19,21 +19,25 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   ingresar(): void {
-        if (this.credential.username == "admin" && this.credential.password == "1234"){this.router.navigate(["layout/dashboard"]);
-        }
-      }
+    if (this.credential.username == "admin" && this.credential.password == "123") {
+      this.router.navigate(["layout/dashboard"]);
+    }
+    if (this.credential.username == "student" && this.credential.password == "123") {
+      this.router.navigate(["student/dashboard"]);
+    }
   }
+}
   /* singIn(): void{
-     this.loginService.singIn(this.credential).subscribe(
-       (response: HttpResponse<Credenciales>) => {
-         if (response.headers.get('Authorization')!=null){
-           sessionStorage.setItem("seguridad_token", String(response.headers.get('Authorization')));
-           sessionStorage.setItem("username", this.credential.username);
-         }
+   this.loginService.singIn(this.credential).subscribe(
+     (response: HttpResponse<Credenciales>) => {
+       if (response.headers.get('Authorization')!=null){
+         sessionStorage.setItem("seguridad_token", String(response.headers.get('Authorization')));
+         sessionStorage.setItem("username", this.credential.username);
        }
-     )
-     this.loggedIn = true;
-     sessionStorage.setItem("loggedIn","true");
-     this.router.navigate(["layout"]);
-   }*/
+     }
+   )
+   this.loggedIn = true;
+   sessionStorage.setItem("loggedIn","true");
+   this.router.navigate(["layout"]);
+ }*/
 
