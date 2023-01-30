@@ -9,13 +9,15 @@ import { PanelCursoComponent } from './dashboard/panel-curso/panel-curso.compone
 import { SearchCursoComponent } from './dashboard/search-curso/search-curso.component';
 
 
+
 @NgModule({
   declarations: [
     HeaderComponent,
     MainComponent,
     SidebarComponent,
     PanelCursoComponent,
-    SearchCursoComponent
+    SearchCursoComponent,
+
   ],
   imports: [
     CommonModule,

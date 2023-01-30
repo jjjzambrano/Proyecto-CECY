@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../dashboard.service';
+import { Curso } from '../curso';
 
 @Component({
   selector: 'app-panel-curso',
@@ -6,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanelCursoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dashboardService: DashboardService
+  ) { }
 
+  cursoList: Curso[]=[];
   ngOnInit(): void {
+
+    this.findAll();
+  }
+
+  public findAll():void {
+    this.dashboardService.findAll().subscribe(
+      (response) => {this.cursoList = response
+        console.log("---esty---");
+        // this.completarNombre();
+      }
+    )
   }
 
 }

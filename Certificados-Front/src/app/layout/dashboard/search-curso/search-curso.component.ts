@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Curso } from '../curso';
+import { DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'app-search-curso',
@@ -6,9 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchCursoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dashboardService: DashboardService) { }
+
+
+  cursos: Curso[] = [];
+  @Output() cursoIdEmitter = new EventEmitter<number>();
+  @Input() cursoId: number = 0;
+
+
 
   ngOnInit(): void {
+    this.findAll();
   }
 
+  public findAll():void {
+    this.dashboardService.findAll().subscribe(
+      (respose) => {this.cursos = respose;
+      console.log(this.cursos);}
+    )
+  }
+
+  public onSelect(id:string){
+
+    this.cursoIdEmitter.emit(parseInt(id));
+    console.log("El id del curso es:" + id);
+
+  }
+
+
 }
+
+

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SolicitudCertificado } from '../solicitud-certificado';
+import { SolicitudCertificadoService } from '../solicitud-certificado.service';
+import { PersonaService } from '../persona-service';
 
 @Component({
   selector: 'app-solicitud-certificado-lista',
@@ -7,7 +9,11 @@ import { SolicitudCertificado } from '../solicitud-certificado';
 })
 export class SolicitudCertificadoListaComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private solicitudCertificadoService: SolicitudCertificadoService,
+    private personaService: PersonaService
+    //necesitamos el revicio de persona para completar la entidad
+  ) { }
 
   solicitudCertificadoList: SolicitudCertificado[] = [];
 
@@ -21,36 +27,23 @@ export class SolicitudCertificadoListaComponent implements OnInit {
 
 
   public findAll():void {
-     this.solicitudCertificadoList =[ {
-      solicitudId: 1,
-      fecha: "2022-02-02",
-      ci: "string",
-      nombre: "string",
-      curso: "string",
-      estadoCurso: "string",
-      estadoCertificado: "Solicitado",
-      url: "string"
-    },{
-      solicitudId: 2,
-      fecha: "2022-02-02",
-      ci: "175113172",
-      nombre: "alberto",
-      curso: "5-b",
-      estadoCurso: "Aprobado",
-      estadoCertificado: "En Proceso",
-      url: "string"
-    },{
-      solicitudId: 3,
-      fecha: "2022-02-02",
-      ci: "175113172",
-      nombre: "gonzales",
-      curso: "5-A",
-      estadoCurso: "Aprobado",
-      estadoCertificado: "Generado",
-      url: "string"
-    }]
+    this.solicitudCertificadoService.findAll().subscribe(
+      (response)=>{
+        this.solicitudCertificadoList=response
+        // this.buscarPersona();
 
+      console.log("esta basura no"+this.solicitudCertificadoList)}
+    )
   }
+  //motivo ddddd modulo
+  // public buscarPersona():void{
+  //   this.solicitudCertificadoList.forEach(
+  //     (solicitud)=>{
+  //       console.log("esto si"+solicitud.personaCurso)
+
+  //     }
+  //   )
+  // }
 
 
 
