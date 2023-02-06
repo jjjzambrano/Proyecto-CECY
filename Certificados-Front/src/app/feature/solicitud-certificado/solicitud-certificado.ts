@@ -8,4 +8,5 @@ export interface SolicitudCertificado{
   nombrecompleto: string,
   cedula: string,
   curso: string,
+  checked: boolean
 }

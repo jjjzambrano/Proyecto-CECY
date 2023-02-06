@@ -5,6 +5,10 @@ import { PersonaService } from '../persona-service';
 import { DashboardService } from 'src/app/layout/dashboard/dashboard.service';
 import { MatriculaServiceService } from '../matricula-service.service';
 import { Matricula } from '../matricula';
+import { ActivatedRoute } from '@angular/router';
+import { Curso } from '../../../layout/dashboard/curso';
+
+
 
 @Component({
   selector: 'app-solicitud-certificado-lista',
@@ -16,15 +20,23 @@ export class SolicitudCertificadoListaComponent implements OnInit {
     private solicitudCertificadoService: SolicitudCertificadoService,
     private personaService: PersonaService,
     private cursoService: DashboardService,
-    private matriculaService: MatriculaServiceService
+    private matriculaService: MatriculaServiceService,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   solicitudCertificadoList: SolicitudCertificado[] = [];
   matriculaList: Matricula[] = [];
   certificadoList: SolicitudCertificado[] = [];
-
+ checkedList: SolicitudCertificado[] = [];
   ngOnInit(): void {
     this.findAll();
+    this.activatedRoute.paramMap.subscribe(
+      (params) => {
+        if (params.get("id")) {
+          this.findById(parseInt(params.get("id")!));
+        }
+      }
+    )
   }
 
 
@@ -35,6 +47,7 @@ export class SolicitudCertificadoListaComponent implements OnInit {
         this.buscarPersona();
         this.buscarCurso();
         this.findMatricula();
+        this.certificadoList.map(re => { re.checked = false })
       }
     )
   }
@@ -77,18 +90,53 @@ export class SolicitudCertificadoListaComponent implements OnInit {
     this.matriculaList.forEach(
       (matricula) => {
         if (matricula.state == 'Aprobado')
-        this.solicitudCertificadoList.forEach(
-          (certificado)=> {
-            if(certificado.userId == matricula.userId){
-              this.certificadoList.push(certificado)
+          this.solicitudCertificadoList.forEach(
+            (certificado) => {
+              if (certificado.userId == matricula.userId && certificado.courseId == this.currentEntity.id) {
+                certificado.checked = false;
+                this.certificadoList.push(certificado)
+                console.log(this.certificadoList)
+              }
             }
-          }
-        )
-          console.log(matricula.userId)
+          )
       }
     )
   }
 
+  currentEntity: Curso =
+    {
+      id: 0,
+      name: "",
+      startDate: new Date(),
+      finishDate: new Date(),
+    };
+
+  findById(id: number): void {
+    this.cursoService.findById(id).subscribe(
+      (response) => {
+        this.currentEntity = response;
+      }
+    )
+  }
+
+  //public checkAll(evemt): void {
+     // this.certificadoList.forEach(element => element.checked = event);
+  //}
+  public checkUncheckAll() {
+    for (var i = 0; i < this.certificadoList.length; i++) {
+      this.certificadoList[i].checked = false;
+    }
+    this.getCheckedItemList();
+  }
+  getCheckedItemList(){
+    this.checkedList = [];
+    for (var i = 0; i < this.certificadoList.length; i++) {
+      if(this.certificadoList[i].checked)
+      this.checkedList.push(this.certificadoList[i]);
+    }
+    this.certificadoList = this.checkedList
+
+  }
 }
 
 

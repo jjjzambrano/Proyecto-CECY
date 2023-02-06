@@ -8,8 +8,9 @@ const routes: Routes = [
   {path: '', component:MainComponent ,
     children: [
       {path: 'dashboard', component:SearchCursoComponent},
-      {path: 'certificado-lista', component:SolicitudCertificadoListaComponent},
+      {path: 'curso-lista/:id', component:SolicitudCertificadoListaComponent},
       {path: 'codigo-lista', component:CodigosCertificadoListaComponent},
+      {path: 'curso-lista', component:SolicitudCertificadoListaComponent},
     ]
   }
 ];

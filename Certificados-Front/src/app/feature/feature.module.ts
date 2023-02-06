@@ -7,6 +7,8 @@ import { SolicitudCertificadoListaComponent } from './solicitud-certificado/soli
 import { SolicitudCertificadoBusquedaComponent } from './solicitud-certificado/solicitud-certificado-busqueda/solicitud-certificado-busqueda.component';
 import { EncabezadoCodigoComponent } from './codigos-certificado/encabezado-codigo/encabezado-codigo.component';
 import { ModalCodigoComponent } from './codigos-certificado/modal-codigo/modal-codigo.component';
+import { SolicitudCertificadoToolbarComponent } from './solicitud-certificado/solicitud-certificado-lista/toolbar/solicitud-certificado-toolbar/solicitud-certificado-toolbar.component';
+
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { ModalCodigoComponent } from './codigos-certificado/modal-codigo/modal-c
     SolicitudCertificadoListaComponent,
     SolicitudCertificadoBusquedaComponent,
     EncabezadoCodigoComponent,
-    ModalCodigoComponent
+    ModalCodigoComponent,
+    SolicitudCertificadoToolbarComponent,
   ],
   imports: [
     CommonModule,

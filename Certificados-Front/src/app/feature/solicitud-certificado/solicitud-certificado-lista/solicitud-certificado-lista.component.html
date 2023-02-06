@@ -1,3 +1,4 @@
+<app-solicitud-certificado-toolbar [entityName]="currentEntity.name" ></app-solicitud-certificado-toolbar>
 <app-solicitud-certificado-busqueda></app-solicitud-certificado-busqueda>
 <div class="m-3 card card-bordered border-black shadow=x1 ">
   <div class="cabezera flex justify-end">
@@ -14,7 +15,7 @@
       <table class="table table-compact w-full" >
           <thead>
               <tr>
-                  <th><input type="checkbox" checked="checked" class="checkbox checkbox-secondary"></th>
+                  <th><input type="checkbox"  (change)="checkUncheckAll()" class="checkbox checkbox-secondary"></th>
                   <th>Fecha Solicitado</th>
                   <th>Cedula</th>
                   <th>Nombre</th>
@@ -26,7 +27,7 @@
           <tbody>
               <tr *ngFor="let valor of certificadoList">
                   <td>
-                    <input type="checkbox" checked="checked" class="checkbox checkbox-secondary">
+                    <input type="checkbox"  class="checkbox checkbox-secondary">
                   </td>
                   <td>{{valor.fecha}}</td>
                   <td>{{valor.cedula}}</td>
