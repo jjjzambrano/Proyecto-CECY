@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Persona } from './persona';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +16,7 @@ export class PersonaService {
     headers: new HttpHeaders({"Content-Type":"application/json"})
   }
 
-  private url: string = "http://localhost:8000/api/persona"
+  private url: string = "http://localhost:8089/api/persona"
   //obtener lista de persona
   public findAll(): Observable<Persona[]>{
     return this.http.get<Persona[]>(this.url+"/", this.httpOptions);

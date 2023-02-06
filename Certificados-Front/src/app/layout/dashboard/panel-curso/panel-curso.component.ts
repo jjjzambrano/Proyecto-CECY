@@ -21,7 +21,7 @@ export class PanelCursoComponent implements OnInit {
   public findAll():void {
     this.dashboardService.findAll().subscribe(
       (response) => {this.cursoList = response
-        console.log("---esty---");
+        console.log("---esty---" + this.cursoList);
         // this.completarNombre();
       }
     )

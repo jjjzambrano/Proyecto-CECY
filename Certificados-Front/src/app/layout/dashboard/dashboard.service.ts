@@ -16,7 +16,7 @@ export class DashboardService {
     headers: new HttpHeaders({"Content-Type":"application/json"})
   }
 
-  private url: string = "http://localhost:8000/api/curso";
+  private url: string = "http://localhost:8089/api/curso";
 
   // public save(curso: Curso): Observable<Curso>{
   //   return this.http.post<Curso>(this.url+"/save", curso, this.httpOptions);

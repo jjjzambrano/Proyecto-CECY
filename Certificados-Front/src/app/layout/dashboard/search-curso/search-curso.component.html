@@ -2,8 +2,8 @@
   <div class="buscador m-1">
     <div class="columns-2">
       <div class="pt-7 pl-7 text-gray-600">
-        <input class="border-2 border-gray-300 bg-white h-12 px-5 pr-20 rounded-lg text-sm focus:outline-none"
-          type="search" name="search" placeholder="Curso">
+        <input #inputSearch class="border-2 border-gray-300 bg-white h-12 px-5 pr-20 rounded-lg text-sm focus:outline-none" type="text" name="" placeholder="Curso" id=""
+        (input)="onInput(inputSearch.value)">
         <button type="submit" class="btn btn-outline btn-secondary absolute">
           <svg class="text-gray-600 h-10 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
@@ -15,19 +15,19 @@
         </button>
       </div>
       <div>
-        <div class="pt-7 pl-5 text-gray-600">
+        <!-- <div class="pt-7 pl-5 text-gray-600">
           <select #seleccionarCurso (change)="onSelect(seleccionarCurso.value)" class="btn btn-outline m-1 h-12 px-2 pr-20" name="" id="">
             <option value=0 selected disabled>Cursos </option>
             <option *ngFor="let contador of cursos"
-              [value]="contador.cursoId"
-              [selected]="contador.cursoId === cursoId">
-              {{contador.nombre}}
+              [value]="contador.id"
+              [selected]="contador.id === id">
+              {{contador.name}}
           </option>
           </select>
 
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
-<app-panel-curso></app-panel-curso>
+  <app-panel-curso></app-panel-curso>
 </div>

@@ -1,8 +1,6 @@
 export interface Curso{
-  cursoId: number,
-  nombre: string,
-  estadoCurso: string,
-  periodoLectivo: string,
-  paralelo: string,
-
+  id: number,
+  name: string,
+  startDate: Date,
+  finishDate: Date,
 }

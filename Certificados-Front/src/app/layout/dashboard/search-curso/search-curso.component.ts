@@ -8,13 +8,15 @@ import { DashboardService } from '../dashboard.service';
 })
 export class SearchCursoComponent implements OnInit {
 
+  @Input() entityName: string = "";
+  @Output() termEmitter = new EventEmitter<string>();
   constructor(
     private dashboardService: DashboardService) { }
 
 
   cursos: Curso[] = [];
   @Output() cursoIdEmitter = new EventEmitter<number>();
-  @Input() cursoId: number = 0;
+  @Input() id: number = 0;
 
 
 
@@ -22,18 +24,22 @@ export class SearchCursoComponent implements OnInit {
     this.findAll();
   }
 
-  public findAll():void {
+  public findAll(): void {
     this.dashboardService.findAll().subscribe(
-      (respose) => {this.cursos = respose;
-      console.log(this.cursos);}
+      (respose) => {
+        this.cursos = respose;
+        console.log(this.cursos);
+      }
     )
   }
 
-  public onSelect(id:string){
+  public onSelect(id: string) {
 
     this.cursoIdEmitter.emit(parseInt(id));
     console.log("El id del curso es:" + id);
-
+  }
+  public onInput(term: string) {
+    this.termEmitter.emit(term);
   }
 
 
