@@ -8,6 +8,7 @@ import { SolicitudCertificadoBusquedaComponent } from './solicitud-certificado/s
 import { EncabezadoCodigoComponent } from './codigos-certificado/encabezado-codigo/encabezado-codigo.component';
 import { ModalCodigoComponent } from './codigos-certificado/modal-codigo/modal-codigo.component';
 import { SolicitudCertificadoToolbarComponent } from './solicitud-certificado/solicitud-certificado-lista/toolbar/solicitud-certificado-toolbar/solicitud-certificado-toolbar.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -22,7 +23,8 @@ import { SolicitudCertificadoToolbarComponent } from './solicitud-certificado/so
   ],
   imports: [
     CommonModule,
-    FeatureRoutingModule
+    FeatureRoutingModule,
+    FormsModule
   ]
 })
 export class FeatureModule { }

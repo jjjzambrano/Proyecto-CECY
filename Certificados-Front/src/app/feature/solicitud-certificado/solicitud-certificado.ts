@@ -1,12 +1,12 @@
 export interface SolicitudCertificado{
-  solicitudId: number,
+  id: number,
   userId: number,
   courseId: number,
   tuitionId: number,
   estado: string,
-  fecha: Date,
-  nombrecompleto: string,
-  cedula: string,
-  curso: string,
-  checked: boolean
+  fecha?: Date,
+  nombrecompleto?: string,
+  cedula?: string,
+  curso?: string,
+  checkeado?: boolean
 }

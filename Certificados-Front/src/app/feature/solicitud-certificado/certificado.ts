@@ -1,8 +1,9 @@
+import { CodigoCertificado } from "../codigos-certificado/codigos-certificado";
+import { SolicitudCertificado } from "./solicitud-certificado";
+
 export interface Certificado{
   id: number,
-  userId: number,
-  courseId: number,
-  tuitionId: number,
-  estado: String,
-  fecha: Date
+  name: string,
+  certicadoId: SolicitudCertificado[],
+  codigos: CodigoCertificado[],
 }

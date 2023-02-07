@@ -1,8 +1,5 @@
 export interface CodigoCertificado{
-  codigoId: number,
+  id: number,
   codigo: string,
-  ci: string,
-  nombre: string,
-  apellido: string,
-  url: string
+  estado?: boolean,
 }

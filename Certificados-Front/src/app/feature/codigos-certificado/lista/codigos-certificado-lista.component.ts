@@ -20,26 +20,6 @@ export class CodigosCertificadoListaComponent implements OnInit {
 
 
   public findAll():void {
-     this.codigoCertificadoList =[ {
-      codigoId: 1,
-      ci: "string",
-      codigo: "string",
-      nombre: "string",
-      apellido: "string",
-      url: "string"
-    },{
-      codigoId: 1,
-      ci: "string",
-      codigo: "string",
-      nombre: "string",
-      apellido: "string",
-      url: "string"
-    },{
-      codigoId: 1,
-      ci: "string",
-      codigo: "string",
-      nombre: "string",
-      apellido: "string",
-      url: "string"
-    }]
+     this.codigoCertificadoList =[
+      ]
   }}

@@ -7,6 +7,10 @@ import { MatriculaServiceService } from '../matricula-service.service';
 import { Matricula } from '../matricula';
 import { ActivatedRoute } from '@angular/router';
 import { Curso } from '../../../layout/dashboard/curso';
+import { CertificadoPdfServiceService } from '../certificado-pdf-service.service';
+import { Certificado } from '../certificado';
+import { CodigosCertificadoService } from '../../codigos-certificado/codigos-certificado.service';
+import { CodigoCertificado } from '../../codigos-certificado/codigos-certificado';
 
 
 
@@ -22,12 +26,27 @@ export class SolicitudCertificadoListaComponent implements OnInit {
     private cursoService: DashboardService,
     private matriculaService: MatriculaServiceService,
     private activatedRoute: ActivatedRoute,
+    private certificadoPdf: CertificadoPdfServiceService,
+    private codigoCertificadoService: CodigosCertificadoService,
   ) { }
 
   solicitudCertificadoList: SolicitudCertificado[] = [];
   matriculaList: Matricula[] = [];
   certificadoList: SolicitudCertificado[] = [];
- checkedList: SolicitudCertificado[] = [];
+  checkedList: SolicitudCertificado[] = [];
+  parentSelector: boolean = false;
+  codigoList: CodigoCertificado[] = [];
+  certificadoEntity: Certificado = {
+    id: 0,
+    name: "",
+    certicadoId: [],
+    codigos: [],
+  };
+  codigoEntity: CodigoCertificado = {
+    id: 0,
+    codigo: "",
+    estado: true,
+  }
   ngOnInit(): void {
     this.findAll();
     this.activatedRoute.paramMap.subscribe(
@@ -47,7 +66,6 @@ export class SolicitudCertificadoListaComponent implements OnInit {
         this.buscarPersona();
         this.buscarCurso();
         this.findMatricula();
-        this.certificadoList.map(re => { re.checked = false })
       }
     )
   }
@@ -93,9 +111,7 @@ export class SolicitudCertificadoListaComponent implements OnInit {
           this.solicitudCertificadoList.forEach(
             (certificado) => {
               if (certificado.userId == matricula.userId && certificado.courseId == this.currentEntity.id) {
-                certificado.checked = false;
                 this.certificadoList.push(certificado)
-                console.log(this.certificadoList)
               }
             }
           )
@@ -119,24 +135,90 @@ export class SolicitudCertificadoListaComponent implements OnInit {
     )
   }
 
-  //public checkAll(evemt): void {
-     // this.certificadoList.forEach(element => element.checked = event);
-  //}
-  public checkUncheckAll() {
-    for (var i = 0; i < this.certificadoList.length; i++) {
-      this.certificadoList[i].checked = false;
-    }
-    this.getCheckedItemList();
-  }
-  getCheckedItemList(){
-    this.checkedList = [];
-    for (var i = 0; i < this.certificadoList.length; i++) {
-      if(this.certificadoList[i].checked)
-      this.checkedList.push(this.certificadoList[i]);
-    }
-    this.certificadoList = this.checkedList
+  onChangeFood($event) {
+    const numeroId = $event.target.value;
+    const isChecked = $event.target.checked;
+    this.certificadoList = this.certificadoList.map((d) => {
+      if (d.id == numeroId) {
+        d.checkeado = isChecked;
 
+        this.parentSelector = false;
+        return d;
+      }
+      if (numeroId == -1) {
+        d.checkeado = this.parentSelector;
+        return d;
+      }
+      return d;
+    });
+  }
+
+  generarCertificados(): void {
+    this.certificadoList.forEach((a) => {
+      this.consultarCodigos();
+      this.codigoList.forEach((codigo) => {
+        if (codigo.estado == true) {
+          this.actualizarCodigo(codigo.id, codigo.codigo)
+          //this.savePdf(a.cedula,codigo.id,a.courseId,a,codigo)
+        }
+      })
+    })
+  }
+  public consultarCodigos(): void {
+    this.codigoCertificadoService.findAll().subscribe(
+      (cod) => {
+        this.codigoList = cod;
+      })
+  }
+  public actualizarCodigo(codigoId: number, codigoNombre: string): void {
+    this.codigoCertificadoService.update(this.codigoEntity).subscribe(() => {
+      this.codigoEntity = {
+        id: codigoId,
+        codigo: codigoNombre,
+        estado: false,
+      }
+    })
+  }
+  public probarUno(): void {
+    const a = "";
+    const b = 0;
+    const c = 0;
+    const d = {
+      id: 1, userId: 1,
+      courseId: 1,
+      tuitionId: 1,
+      estado: "generado",
+      fecha: new Date,
+      nombrecompleto: "",
+      cedula: "",
+      curso: "",
+    };
+    const e = {
+      id: 1,
+      codigo: "",
+    };
+    this.savePdf(a, b, c, d, e)
+  }
+  public savePdf(a: string, b: number, c: number, d: SolicitudCertificado, e: CodigoCertificado): void {
+    this.certificadoPdf.save(this.certificadoEntity).subscribe(() => {
+      this.certificadoEntity =
+      {
+        id: 0,
+        name: "Prueba",
+        certicadoId:
+        [{
+          id: 3, userId: 1, courseId: 4, tuitionId: 1, estado: 'Generado'
+        }],
+        codigos:
+          [{ id: 2, codigo: 'cod0002', estado: true }]
+      };
+      console.log(this.certificadoEntity)
+    })
+  }
+  public findByIdCertificado(): void {
+    this.certificadoPdf.findById(4).subscribe((response) => {
+      this.certificadoEntity = response
+      console.log(this.certificadoEntity)
+    })
   }
 }
-
-

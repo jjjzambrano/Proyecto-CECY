@@ -6,7 +6,7 @@
       <a [routerLink]="'../codigo-lista'" class="btn btn-active btn-accent m-1">Subir Codigos Senescyt</a>
     </div>
     <div class="m-1 flex justify-end">
-      <button class="btn btn-accent">Generar Certificados</button>
+      <a class="btn" (click)="probarUno()" >Generar Certificados</a>
     </div>
 
   </div>
@@ -15,7 +15,7 @@
       <table class="table table-compact w-full" >
           <thead>
               <tr>
-                  <th><input type="checkbox"  (change)="checkUncheckAll()" class="checkbox checkbox-secondary"></th>
+                  <th><input type="checkbox" [(ngModel)]="parentSelector" [value]="-1" (change)="onChangeFood($event)" class="checkbox checkbox-secondary"></th>
                   <th>Fecha Solicitado</th>
                   <th>Cedula</th>
                   <th>Nombre</th>
@@ -27,7 +27,7 @@
           <tbody>
               <tr *ngFor="let valor of certificadoList">
                   <td>
-                    <input type="checkbox"  class="checkbox checkbox-secondary">
+                    <input type="checkbox" [value]="valor.id" [checked]="valor.checkeado" (change)="onChangeFood($event)" class="checkbox checkbox-secondary">
                   </td>
                   <td>{{valor.fecha}}</td>
                   <td>{{valor.cedula}}</td>
