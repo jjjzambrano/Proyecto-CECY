@@ -4,6 +4,6 @@ import { SolicitudCertificado } from "./solicitud-certificado";
 export interface Certificado{
   id: number,
   name: string,
-  certicadoId: SolicitudCertificado[],
-  codigos: CodigoCertificado[],
+  certicadoId: {},
+  codigos: {},
 }

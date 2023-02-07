@@ -143,6 +143,7 @@ export class SolicitudCertificadoListaComponent implements OnInit {
         d.checkeado = isChecked;
 
         this.parentSelector = false;
+        console.log(d)
         return d;
       }
       if (numeroId == -1) {
@@ -202,16 +203,17 @@ export class SolicitudCertificadoListaComponent implements OnInit {
   public savePdf(a: string, b: number, c: number, d: SolicitudCertificado, e: CodigoCertificado): void {
     this.certificadoPdf.save(this.certificadoEntity).subscribe(() => {
       this.certificadoEntity =
-      {
-        id: 0,
-        name: "Prueba",
-        certicadoId:
-        [{
-          id: 3, userId: 1, courseId: 4, tuitionId: 1, estado: 'Generado'
-        }],
-        codigos:
-          [{ id: 2, codigo: 'cod0002', estado: true }]
-      };
+        {
+            id: 0,
+            name: "Prueba",
+            certicadoId:
+              {
+                id: 3, userId: 1, courseId: 4, tuitionId: 1, estado: 'Generado'
+              },
+            codigos:
+              { id: 2, codigo: 'cod0002', estado: true }
+            }
+
       console.log(this.certificadoEntity)
     })
   }
