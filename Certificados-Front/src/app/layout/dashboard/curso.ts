@@ -1,6 +1,6 @@
 export interface Curso{
   id: number,
-  name: string,
-  startDate: Date,
-  finishDate: Date,
+  nombre: string,
+  fechaInicio: Date,
+  fechaFin: Date,
 }

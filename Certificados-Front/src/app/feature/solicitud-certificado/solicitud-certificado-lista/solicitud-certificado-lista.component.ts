@@ -98,7 +98,7 @@ export class SolicitudCertificadoListaComponent implements OnInit {
         this.cursoService.findById(
           solicitud.courseId
         ).subscribe(
-          (nombreCurso) => solicitud.curso = nombreCurso.name
+          (nombreCurso) => solicitud.curso = nombreCurso.nombre
         )
       }
     )
@@ -122,9 +122,9 @@ export class SolicitudCertificadoListaComponent implements OnInit {
   currentEntity: Curso =
     {
       id: 0,
-      name: "",
-      startDate: new Date(),
-      finishDate: new Date(),
+      nombre: "",
+      fechaInicio: new Date(),
+      fechaFin: new Date(),
     };
 
   findById(id: number): void {

@@ -1,12 +1,14 @@
-<app-solicitud-certificado-toolbar [entityName]="currentEntity.name" ></app-solicitud-certificado-toolbar>
+<app-solicitud-certificado-toolbar [entityName]="currentEntity.nombre" ></app-solicitud-certificado-toolbar>
 <app-solicitud-certificado-busqueda></app-solicitud-certificado-busqueda>
 <div class="m-3 card card-bordered border-black shadow=x1 ">
   <div class="cabezera flex justify-end">
     <div>
-      <a [routerLink]="'../codigo-lista'" class="btn btn-active btn-accent m-1">Subir Codigos Senescyt</a>
+     <a [routerLink]="'../codigo-lista'" class="btn btn-active btn-accent m-1">Subir Codigos Senescyt</a>
+     
     </div>
     <div class="m-1 flex justify-end">
       <a class="btn" (click)="probarUno()" >Generar Certificados</a>
+     
     </div>
 
   </div>
@@ -35,7 +37,7 @@
                   <td>{{valor.curso}}</td>
                   <td>{{valor.estado}}</td>
                   <td><button class="btn btn-outline btn-accent">Vizualizar</button></td>
-
+                  
               </tr>
           </tbody>
       </table>
@@ -57,9 +59,8 @@
         </svg>
       </a>
     </div>
-
   </div>
-
-
 </div>
+
+
 
