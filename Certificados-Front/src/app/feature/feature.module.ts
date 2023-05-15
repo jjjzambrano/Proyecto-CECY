@@ -9,6 +9,7 @@ import { EncabezadoCodigoComponent } from './codigos-certificado/encabezado-codi
 import { ModalCodigoComponent } from './codigos-certificado/modal-codigo/modal-codigo.component';
 import { SolicitudCertificadoToolbarComponent } from './solicitud-certificado/solicitud-certificado-lista/toolbar/solicitud-certificado-toolbar/solicitud-certificado-toolbar.component';
 import { FormsModule } from '@angular/forms';
+import { ReporteComponent } from './reporte/reporte.component';
 
 
 
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     EncabezadoCodigoComponent,
     ModalCodigoComponent,
     SolicitudCertificadoToolbarComponent,
+    ReporteComponent,
   ],
   imports: [
     CommonModule,

@@ -223,4 +223,12 @@ export class SolicitudCertificadoListaComponent implements OnInit {
       console.log(this.certificadoEntity)
     })
   }
+
+   public descarga(id){this.certificadoPdf.descarga(id).subscribe((data) =>{
+    let dowloadURL = window.URL.createObjectURL(data)
+    let link = document.createElement('a')
+    link.href = dowloadURL
+    link.download = "certificado.pdf"
+    link.click()
+  })}
 }

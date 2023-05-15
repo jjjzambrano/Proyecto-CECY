@@ -4,11 +4,11 @@
   <div class="cabezera flex justify-end">
     <div>
      <a [routerLink]="'../codigo-lista'" class="btn btn-active btn-accent m-1">Subir Codigos Senescyt</a>
-     
+
     </div>
     <div class="m-1 flex justify-end">
-      <a class="btn" (click)="probarUno()" >Generar Certificados</a>
-     
+      <a class="btn" >Generar Certificados</a>
+
     </div>
 
   </div>
@@ -36,8 +36,8 @@
                   <td>{{valor.nombrecompleto}}</td>
                   <td>{{valor.curso}}</td>
                   <td>{{valor.estado}}</td>
-                  <td><button class="btn btn-outline btn-accent">Vizualizar</button></td>
-                  
+                  <td><button class="btn btn-outline btn-accent" (click)="descarga(valor.id)" >Vizualizar</button></td>
+
               </tr>
           </tbody>
       </table>
